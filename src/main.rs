@@ -4,7 +4,7 @@ use std::cmp::Ordering;
 use std::io::Write;
 
 fn main() {
-    println!("Guess the number!");
+    println!("Guess the number between 1 and 100 (inclusive).");
 
     
     // let secret_number = rand::thread_rng().gen_range(1..101);
@@ -22,10 +22,15 @@ fn main() {
         io::stdin().read_line(&mut guess).
         expect("Failed to read line");
     
-        let guess: u32 = match guess.trim().parse() {
+        let guess: i32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
+
+        if guess < 1 || guess > 100 {
+            println!("The secret number will be between 1 and 100.");
+            continue;
+        }
     
         println!("You gussed: {}", guess);
         
