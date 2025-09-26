@@ -1,17 +1,12 @@
-use std::io;
 use rand::Rng;
 use std::cmp::Ordering;
-use std::io::Write;
+use std::io::{self, Write};
 
 fn main() {
-    println!();
-    println!("Guess the number between 1 and 100 (inclusive).");
-    println!("__________________");
-    println!();
-    
-    
-    // let secret_number = rand::thread_rng().gen_range(1..101);
-    // let secret_number = rand::thread_rng().range(1..101);
+
+    println!("\nGuess the number between 1 and 100 (inclusive).");
+    println!("__________________\n");
+
     let secret_number = rand::rng().random_range(1..101);
     
     // println!("The secret number is: {}", secret_number);
@@ -50,8 +45,7 @@ fn main() {
                 println!("__________________");
             }, 
             Ordering::Equal => {
-                println!();
-                println!("You won!, in {count} tries");
+                println!("\nYou won!, in {count} tries");
                 break;
             } 
         }
